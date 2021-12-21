@@ -39,3 +39,9 @@ void ListInsert(MyList *list, int i, int e);
 int *ListDelete(MyList *list, int i);
 
 void ListTraverse(MyList list);
+
+//eg 2.1 at page 20
+void Union(MyList *listA, MyList listB);
+
+//eg 2.7 at page 26
+MyList *MergeList_Sq(MyList La, MyList Lb);

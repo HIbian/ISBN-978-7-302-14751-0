@@ -70,13 +70,13 @@ void ListInsert(MyList *list, int i, int e) {
     if (list->size == list->len) {
         //situation of full : add space
         list->size *= list->malloc_factor;
-        int *new_space = (int *) malloc(list->size * sizeof(int ));
+        int *new_space = (int *) malloc(list->size * sizeof(int));
         for (int j = 0; j < list->len; ++j) {
-            *(new_space+j)= *(list->elem+j);
+            *(new_space + j) = *(list->elem + j);
         }
         free(list->elem);
         list->elem = new_space;
-        printf("malloced , size is %d\n",list->size);
+        printf("malloced , size is %d\n", list->size);
     }
     int *p = list->elem + list->len;
     int mc = list->len - i;
@@ -114,4 +114,37 @@ void ListTraverse(MyList list) {
     }
     putchar(']');
     putchar('\n');
+}
+
+void Union(MyList *listA, MyList listB) {
+    int len_b = ListLength(listB);
+    for (int i = 0; i < len_b; ++i) {
+        if (Locate(*listA, *(listB.elem + i)) == -1) {
+            ListInsert(listA, listA->len, *(listB.elem + i));
+        }
+    }
+}
+
+MyList *MergeList_Sq(MyList La, MyList Lb) {
+    MyList *Lc = InitList();
+    int ia = 0;
+    int ib = 0;
+    while (ia < La.len && ib < Lb.len) {
+        if (*(La.elem + ia) < *(Lb.elem + ib)) {
+            ListInsert(Lc, Lc->len, *(La.elem + ia));
+            ia++;
+        } else {
+            ListInsert(Lc, Lc->len, *(Lb.elem + ib));
+            ib++;
+        }
+    }
+    while(ia<La.len){
+        ListInsert(Lc, Lc->len, *(La.elem + ia));
+        ia++;
+    }
+    while (ib<Lb.len){
+        ListInsert(Lc,Lc->len,*(Lb.elem+ib));
+        ib++;
+    }
+    return Lc;
 }
