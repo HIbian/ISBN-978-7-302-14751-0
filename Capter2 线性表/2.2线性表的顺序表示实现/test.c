@@ -41,8 +41,9 @@ int main() {
     }
     SHOW_LIST
     DestroyList(list);
+
     //eg 2.1 at page 20
     //eg 2.2 at page 20
-    //eg 2.4
+    //eg 2.7 at page 26
     return 0;
 }
