@@ -125,6 +125,7 @@ void Union(MyList *listA, MyList listB) {
     }
 }
 
+//this implement is not effective
 MyList *MergeList_Sq(MyList La, MyList Lb) {
     MyList *Lc = InitList();
     int ia = 0;
