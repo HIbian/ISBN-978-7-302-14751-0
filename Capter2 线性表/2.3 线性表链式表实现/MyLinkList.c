@@ -197,5 +197,7 @@ LinkList MergeList_L(LinkList La, LinkList Lb) {
         pc->next = pb;
     if (!pb)
         pc->next = pa;
+    FreeNode(La);
+    FreeNode(Lb);
     return Lc;
 }
