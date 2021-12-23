@@ -58,6 +58,6 @@ LNode *LocateElem(LinkList list,int e);
 
 void ListTraverse(LinkList list);
 
-
+LinkList MergeList_L(LinkList La,LinkList Lb);
 
 

@@ -52,10 +52,10 @@ int InsFirst(LNode *head, LNode *s) {
 
 LNode *DelFirst(LNode *head) {
     LNode *first = head->next;
-    if(!first)
+    if (!first)
         return NULL;
     head->next = first->next;
-    first ->next = NULL;
+    first->next = NULL;
     return first;
 }
 
@@ -144,38 +144,58 @@ LNode *PriorPos(LinkList list, LNode *node) {
     return p;
 }
 
-LNode *NextPos(LinkList list, LNode *node){
+LNode *NextPos(LinkList list, LNode *node) {
     //interesting;
     return node->next;
 }
 
-int LocatePos(LinkList list, LNode *node){
+int LocatePos(LinkList list, LNode *node) {
     //start from 0;
     int pos = 0;
     LNode *p = list;
-    while (p->next!=node&&p->next){
+    while (p->next != node && p->next) {
         pos++;
         p = p->next;
     }
-    if(!p->next)
+    if (!p->next)
         return ERROR;
     return pos;
 }
 
-LNode *LocateElem(LinkList list, int e){
+LNode *LocateElem(LinkList list, int e) {
     LNode *p = list;
-    while ((p = p->next)){
-        if(p->data == e)
+    while ((p = p->next)) {
+        if (p->data == e)
             return p;
     }
     return NULL;
 }
 
-void ListTraverse(LinkList list){
+void ListTraverse(LinkList list) {
     LNode *p = list;
     printf("*->");
-    while ((p=p->next)){
-        printf("%d->",p->data);
+    while ((p = p->next)) {
+        printf("%d->", p->data);
     }
     printf("NULL\n");
+}
+
+LinkList MergeList_L(LinkList La, LinkList Lb) {
+    LinkList Lc = InitList();
+    LNode *pc = Lc, *pa = La->next, *pb = Lb->next;
+    while (pa&&pb){
+        if (pa->data < pb->data) {
+            pc->next = pa;
+            pa = pa->next;
+        } else{
+            pc->next = pb;
+            pb = pb ->next;
+        }
+        pc = pc ->next;
+    }
+    if (!pa)
+        pc->next = pb;
+    if (!pb)
+        pc->next = pa;
+    return Lc;
 }

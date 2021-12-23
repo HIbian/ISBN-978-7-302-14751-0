@@ -70,6 +70,18 @@ int main() {
     printf("%d\n", PriorPos(list,anode)->data);
     printf("%d\n", NextPos(list,anode)->data);
 
+    //9. test merge
+    LinkList La = InitList();
+    LinkList Lb = InitList();
+    for (int i = 0; i < 10; ++i) {
+        Append(La, MakeNode(2*i));
+        Append(Lb, MakeNode(3*i));
+    }
+    SHOW(La);
+    SHOW(Lb);
+    LinkList Lc = MergeList_L(La,Lb);
+    SHOW(Lc);
+
     //just play;
     progress();
 
