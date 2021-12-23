@@ -201,3 +201,19 @@ LinkList MergeList_L(LinkList La, LinkList Lb) {
     FreeNode(Lb);
     return Lc;
 }
+
+void ReverseLinkList(LinkList list){
+    LNode *p = list->next;
+    if(!p)
+        return;
+    LNode *pn = p->next;
+    p->next = NULL;
+    LNode *pnn = NULL;
+    while (pn) {
+        pnn = pn ->next;
+        pn ->next = p;
+        p = pn;
+        pn = pnn;
+    }
+    list->next = p;
+}

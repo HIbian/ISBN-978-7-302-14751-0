@@ -70,7 +70,7 @@ int main() {
     printf("%d\n", PriorPos(list,anode)->data);
     printf("%d\n", NextPos(list,anode)->data);
 
-    //9. test merge
+    //9. test merge 2.21 at page 39
     LinkList La = InitList();
     LinkList Lb = InitList();
     for (int i = 0; i < 10; ++i) {
@@ -80,6 +80,10 @@ int main() {
     SHOW(La);
     SHOW(Lb);
     LinkList Lc = MergeList_L(La,Lb);
+    SHOW(Lc);
+
+    //10. test reverse
+    ReverseLinkList(Lc);
     SHOW(Lc);
 
     //just play;
