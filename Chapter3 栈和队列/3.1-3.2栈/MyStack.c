@@ -52,7 +52,8 @@ int Pop(MyStack *stack){
 
 
 void StackTraverse(MyStack stack){
-    while (--stack.len>=0)
-        printf("%d ",*(stack.data+stack.len));
-    printf("<-\n");
+    for (int i = 0; i < stack.len; ++i) {
+        printf("%d ",*(stack.data+i));
+    }
+    printf("<-top\n");
 }
