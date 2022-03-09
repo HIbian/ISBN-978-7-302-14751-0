@@ -1,9 +1,9 @@
 #define True 1
 #define False 0
+#define MaxSize 10
 
 typedef struct{
     int *elem;
-    int maxSize;
     int front;
     int rear;
 }MyQueue;
@@ -20,7 +20,7 @@ int QueueLength(MyQueue q);
 
 int GetHead(MyQueue q);
 
-void EnQueue(MyQueue *q);
+void EnQueue(MyQueue *q,int num);
 
 int DeQueue(MyQueue *q);
 
