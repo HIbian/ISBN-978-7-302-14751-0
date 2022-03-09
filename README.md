@@ -8,3 +8,6 @@
 * [第二章 线性表](https://github.com/HIbian/ISBN-978-7-302-14751-0/tree/master/Chapter2%20%E7%BA%BF%E6%80%A7%E8%A1%A8)
   * [2.2 线性表的顺序表示实现](https://github.com/HIbian/ISBN-978-7-302-14751-0/tree/master/Chapter2%20%E7%BA%BF%E6%80%A7%E8%A1%A8/2.2%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%9A%84%E9%A1%BA%E5%BA%8F%E8%A1%A8%E7%A4%BA%E5%AE%9E%E7%8E%B0)
   * [2.3 线性表的链式表示实现](https://github.com/HIbian/ISBN-978-7-302-14751-0/tree/master/Chapter2%20%E7%BA%BF%E6%80%A7%E8%A1%A8/2.3%20%E7%BA%BF%E6%80%A7%E8%A1%A8%E9%93%BE%E5%BC%8F%E8%A1%A8%E5%AE%9E%E7%8E%B0)
+* [第三章 栈和队列](https://github.com/HIbian/ISBN-978-7-302-14751-0/tree/master/Chapter3%20%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97)
+  * [3.1-3.2 栈](https://github.com/HIbian/ISBN-978-7-302-14751-0/tree/master/Chapter3%20%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/3.1-3.2%E6%A0%88)
+  * [3.4 队列](https://github.com/HIbian/ISBN-978-7-302-14751-0/tree/master/Chapter3%20%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/3.4%E9%98%9F%E5%88%97)
