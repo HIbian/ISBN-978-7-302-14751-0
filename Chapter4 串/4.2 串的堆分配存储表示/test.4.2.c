@@ -40,5 +40,13 @@ int main() {
     Replace(str11, *str22, *str33);
     show(*str11);
 
+    //insert
+    MyString *insert = StrAssgin("how you");
+    MyString *in = StrAssgin("are ");
+    StrInsert(insert,5,*in);
+    show(*insert);
 
+    //delete
+    StrDelete(insert,5,4);
+    show(*insert);
 }

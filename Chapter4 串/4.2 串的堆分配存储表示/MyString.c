@@ -82,7 +82,7 @@ int Index(MyString S, MyString T, int pos) {
     for (int i = pos - 1; i < S.length - T.length + 1; ++i) {
         int count = 0;
         int j = i;
-        while (S.ch[j] == T.ch[count]&&S.ch[j]!='\0') {
+        while (S.ch[j] == T.ch[count] && S.ch[j] != '\0') {
             j++;
             count++;
         }
@@ -140,13 +140,51 @@ void Replace(MyString *S, MyString T, MyString V) {
 }
 
 //从pos个字符开始插入串T
-void StrInsert(MyString *S, int pos, MyString T);
+void StrInsert(MyString *S, int pos, MyString T) {
+    char *chs = (char *) malloc(sizeof(char) * (S->length + T.length));
+    if (!chs) exit(-1);
+    int i = 0;
+    while (i < pos - 1) {
+        chs[i] = S->ch[i];
+        i++;
+    }
+    while (i - pos + 1 < T.length) {
+        chs[i] = T.ch[i - pos + 1];
+        i++;
+    }
+    while (i < S->length + T.length) {
+        chs[i] = S->ch[i - T.length];
+        i++;
+    }
+    free(S->ch);
+    S->ch = chs;
+    S->length = S->length + T.length;
+}
 
 //删除从pos开始长len的子串
-void StrDelete(MyString *S, int pos, int len);
+void StrDelete(MyString *S, int pos, int len) {
+    if (S->length - len < 0) exit(-1);
+    char *chs = (char *) malloc(sizeof(char) * (S->length - len));
+    if (!chs) exit(-1);
+    int i = 0;
+    while (i < pos - 1) {
+        chs[i] = S->ch[i];
+        i++;
+    }
+    while (i< S->length - len){
+        chs[i] = S->ch[i + len];
+        i++;
+    }
+    S->length = S->length - len;
+    free(S->ch);
+    S->ch = chs;
+}
 
 //销毁S,回收资源
-void DestroyString(MyString *S);
+void DestroyString(MyString *S) {
+    free(S->ch);
+    free(S);
+}
 
 //屏幕打印字符串
 void show(MyString S) {
