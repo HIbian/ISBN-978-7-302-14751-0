@@ -5,22 +5,40 @@
 #include "MyString.h"
 #include "stdio.h"
 
-int main(){
+int main() {
     MyString *s = StrAssgin("abc");
     show(*s);
     MyString *t = StrCopy(*s);
     show(*t);
-    MyString *s3 = Conact(*s,*t);
+    MyString *s3 = Conact(*s, *t);
     show(*s3);
-    MyString *sub = SubString(*s3,3,3);
+    MyString *sub = SubString(*s3, 3, 3);
     show(*sub);
 
     MyString *i1 = StrAssgin("abcdefgh");
-    MyString *temp = StrAssgin("d");
+    MyString *temp = StrAssgin("gh");
     show(*i1);
     show(*temp);
-    int index = Index(*i1,*temp,1);
-    printf("pos is : %d\n",index);
+    int index = Index(*i1, *temp, 1);
+    printf("pos is : %d\n", index);
+    printf("test replace\n");
+    MyString *str1 = StrAssgin("12232278226");
+    MyString *str2 = StrAssgin("22");
+    MyString *str3 = StrAssgin("888");
+    show(*str1);
+    show(*str2);
+    show(*str3);
+    Replace(str1, *str2, *str3);
+    show(*str1);
+    printf("test replace 2\n");
+    MyString *str11 = StrAssgin("ssiiadlsksiidwdnlzlxcasiisadlkwdljlasiicalsalksjdiiasdljlqwjdiilaksjdlkjxzcaii");
+    MyString *str22= StrAssgin("ii");
+    MyString *str33 = StrAssgin("OOOOO");
+    show(*str11);
+    show(*str22);
+    show(*str33);
+    Replace(str11, *str22, *str33);
+    show(*str11);
 
 
 }

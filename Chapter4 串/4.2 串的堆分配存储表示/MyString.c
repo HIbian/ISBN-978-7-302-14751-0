@@ -82,8 +82,9 @@ int Index(MyString S, MyString T, int pos) {
     for (int i = pos - 1; i < S.length - T.length + 1; ++i) {
         int count = 0;
         int j = i;
-        while (S.ch[j] == T.ch[count]){
-            j++;count++;
+        while (S.ch[j] == T.ch[count]&&S.ch[j]!='\0') {
+            j++;
+            count++;
         }
         if (count == T.length) return i + 1;
     }
@@ -91,7 +92,51 @@ int Index(MyString S, MyString T, int pos) {
 }
 
 //不重叠地替换S中所有子串T为V
-void Replace(MyString *S, MyString T, MyString V){
+typedef struct array {
+    int pos;
+    int number;
+    struct array *next;
+} LinkedArrary;
+
+void Replace(MyString *S, MyString T, MyString V) {
+    //找到有几处需要替换，确定最终字符串长度
+    LinkedArrary *head = (LinkedArrary *) malloc(sizeof(LinkedArrary));
+    head->pos = 0;
+    head->number = 0;
+    head->next = NULL;
+    LinkedArrary *p = head;
+    int pos = 1;
+    int count = 0;
+    while (pos = Index(*S, T, pos)) {
+        p->next = (LinkedArrary *) malloc(sizeof(LinkedArrary));
+        p = p->next;
+        p->pos = pos;
+        pos += T.length;
+        p->number = ++count;
+    }
+    int offset = V.length - T.length;
+    int length = S->length + offset * count;
+    char *chars = (char *) malloc(sizeof(char) * length);
+    p = head->next;
+    int end = 0;
+    for (int i = 0; i < length; ++i) {
+        if (i < (p->number - 1) * offset + p->pos - 1 || i >= (p->number - 1) * offset + p->pos - 1 + V.length) {
+            chars[i] = S->ch[i - offset * (p->number - 1)];
+        } else if (end) {
+            chars[i] = S->ch[i - offset * end];
+        } else {
+            chars[i] = V.ch[i - ((p->number - 1) * offset + p->pos - 1)];
+            if (i - ((p->number - 1) * offset + p->pos - 1) == V.length - 1) {
+                if (p->next) p = p->next;
+                else {
+                    end = p->number++;
+                }
+            }
+        }
+    }
+    free(S->ch);
+    S->ch = chars;
+    S->length = length;
 }
 
 //从pos个字符开始插入串T
