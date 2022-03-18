@@ -191,3 +191,35 @@ void show(MyString S) {
     printf("%s,%d\n", S.ch, S.length);
 }
 
+int *getNext(MyString S){
+    int *next= (int*) malloc(sizeof(int)*S.length);
+    int i = 0;
+    next[0] = 0;
+    int j = 0;
+    while (i < S.length){
+        if(j == 0 || S.ch[i] == S.ch[j]){
+            i++;j++;
+            next[i] = j;
+        }else{
+            j = next[j];
+        }
+    }
+}
+
+int KMPIndex(MyString S,MyString T,int pos){
+    //pos>=1,but MyString index begins at zero.
+    int *next = getNext(T);
+    int j = 0;
+    for (int i = pos-1; i < S.length-T.length+1; ++i) {
+        //when find last
+        if(j == T.length){
+            return i-T.length+1;
+        }
+        if(S.ch[i] == T.ch[j]){
+            j++;
+            continue;
+        }
+        j = next[j];
+    }
+    return 0;
+}

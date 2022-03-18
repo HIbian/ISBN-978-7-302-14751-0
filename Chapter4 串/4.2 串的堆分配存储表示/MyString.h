@@ -52,3 +52,7 @@ void DestroyString(MyString* S);
 //屏幕打印字符串
 void show(MyString S);
 
+int KMPIndex(MyString S,MyString T,int pos);
+
+int* getNext(MyString T);
+
