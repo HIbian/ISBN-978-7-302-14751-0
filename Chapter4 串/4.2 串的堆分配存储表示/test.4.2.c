@@ -49,4 +49,9 @@ int main() {
     //delete
     StrDelete(insert,5,4);
     show(*insert);
+
+    //kmp
+    MyString *kmp_s = StrAssgin("abababababaaababaabcdiaadbos");
+    MyString *kmp_t = StrAssgin("abaabc");
+    printf("%d\n", KMPIndex(*kmp_s,*kmp_t,0));
 }
