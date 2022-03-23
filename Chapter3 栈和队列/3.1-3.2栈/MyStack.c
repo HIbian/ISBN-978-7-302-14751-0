@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-MyStack *InitStack() {
+MyStack *InitQueue() {
     MyStack *stack = (MyStack *) malloc(sizeof(MyStack));
     stack->data = (int *) malloc(DefaultSize*sizeof(int));
     stack->len =0;

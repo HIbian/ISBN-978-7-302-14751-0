@@ -5,12 +5,15 @@
 #include "MyBinaryTree.h"
 #include "stdio.h"
 
+#define _____ printf("\n========\n");
+#define RETURN printf("\n");
+
 int main() {
+    //test InitBitTree,CreateBiTree,PreOrder,Destroy
     int def[] = {11, 1, 2, 3, 4, 5, 0, 0, 0, 0, 6, 7};
     MyBiTree *T = InitBiTree();
     CreateBiTree(T, def, 1);
     PreOrderTraverse(T);
-
     /*
      * 使用工具查看是否内存泄露
      * valgrind --tool=memcheck --leak-check=full ./6.2
@@ -25,5 +28,25 @@ int main() {
      * ==6736== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)*
      */
     DestroyBiTree(T);
+    _____
+    //test Clear
+    printf("tree destroyed\n");
+    T = InitBiTree();
+    CreateBiTree(T, def, 1);
+    PreOrderTraverse(T);
+    RETURN
+    InOrderTraverse(T);
+    RETURN
+    PostOrderTraverse(T);
+    RETURN
+    LevelOrderTraverse(T);
+    RETURN
+    printf("depth is %d\n", BitTreeDepth(T));
+    ClearBiTree(T);
+    PreOrderTraverse(T);
+    _____
+    printf("T is empty?%d\n", BitTreeEmpty(*T));
+
+
 }
 
