@@ -8,7 +8,7 @@ typedef struct{
     int rear;
 }MyQueue;
 
-MyQueue* InitQueue();
+MyQueue* InitStack();
 
 void DestoryQueue(MyQueue *q);
 

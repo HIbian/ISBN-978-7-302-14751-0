@@ -10,7 +10,7 @@ void practice3_2_2(char *str);
 
 int main() {
     //test
-    MyStack *s = InitQueue();
+    MyStack *s = InitStack();
     for (int i = 0; i < 5; ++i) {
         Push(s, i * 3);
         printf("%d|", GetTop(*s));
@@ -38,7 +38,7 @@ int main() {
 }
 
 void practice3_2_1(int num, int d) {
-    MyStack *S = InitQueue();
+    MyStack *S = InitStack();
     while (num) {
         Push(S, num % d);
         num /= d;
@@ -51,7 +51,7 @@ void practice3_2_1(int num, int d) {
 
 void practice3_2_2(char *str) {
     char *p = str;
-    MyStack *s = InitQueue();
+    MyStack *s = InitStack();
     while (*p != '\0') {
         if (*p == '(' || *p == '{' || *p == '[') {
             Push(s, *p);

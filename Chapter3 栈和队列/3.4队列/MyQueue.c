@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include "stdio.h"
 
-MyQueue* InitQueue(){
+MyQueue* InitStack(){
     MyQueue *queue = (MyQueue*) malloc(sizeof(MyQueue));
     queue->elem = (int*) malloc(sizeof(int)*MaxSize);
     queue->front = 0;

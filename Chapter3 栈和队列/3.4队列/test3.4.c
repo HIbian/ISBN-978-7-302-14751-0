@@ -5,7 +5,7 @@
 #include "stdio.h"
 
 int main() {
-    MyQueue *queue = InitQueue();
+    MyQueue *queue = InitStack();
     EnQueue(queue, 1);
     EnQueue(queue, 2);
     EnQueue(queue, 3);

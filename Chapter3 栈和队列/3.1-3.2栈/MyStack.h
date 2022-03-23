@@ -17,7 +17,7 @@ typedef struct MyStack {
     int len;
 } MyStack;
 
-MyStack *InitQueue();
+MyStack *InitStack();
 
 void DestroyStack(MyStack *stack);
 
