@@ -20,6 +20,7 @@ int main(){
      * 3 4
      * 5 3
      * 通过debug和画图验证数据正确性
+     * https://cdn.jsdelivr.net/gh/HIbian/MyStaticResources/202203301641025.jpg
      */
     CreateDG(G);
     printf("%d %d",G->vexnum,G->arcnum);
