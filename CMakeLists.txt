@@ -9,3 +9,5 @@ add_executable(3.1 "Chapter3 栈和队列/3.1-3.2栈/test3.1.c" "Chapter3 栈和
 add_executable(3.4 "Chapter3 栈和队列/3.4队列/MyQueue.c" "Chapter3 栈和队列/3.4队列/MyQueue.h" "Chapter3 栈和队列/3.4队列/test3.4.c")
 add_executable(4.2 "Chapter4 串/4.2 串的堆分配存储表示/MyString.h" "Chapter4 串/4.2 串的堆分配存储表示/MyString.c" "Chapter4 串/4.2 串的堆分配存储表示/test.4.2.c" )
 add_executable(6.2 "Chapter6 树和二叉树/6.2 二叉树的链式存储/MyBinaryTree.h" "Chapter6 树和二叉树/6.2 二叉树的链式存储/MyBinaryTree.c" "Chapter6 树和二叉树/6.2 二叉树的链式存储/test6.2.c" "Chapter6 树和二叉树/6.2 二叉树的链式存储/NodeQueue.c")
+add_executable(7 "Chapter7 图/test.c" "Chapter7 图/MyGraph.h")
+
