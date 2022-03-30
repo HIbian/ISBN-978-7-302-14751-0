@@ -20,15 +20,15 @@ typedef struct {
 } ALGraph;
 
 //十字链表 - 有向图
-typedef struct AcrBox {
+typedef struct ArcBox {
     int tailvex, headvex;
-    struct AcrBox *tlink, *hlink;
+    struct ArcBox *tlink, *hlink;
     int weight;
-} AcrBox;
+} ArcBox;
 
 typedef struct VexNode {
     int data;
-    ArcNode *firstin, firstout;
+    ArcBox *firstin, *firstout;
 } VexNode;
 
 typedef struct {
@@ -58,3 +58,4 @@ typedef struct {
     int vexnum,arcnum;
 }AMLGraph;
 
+int CreateDG(OLGraph *G);
