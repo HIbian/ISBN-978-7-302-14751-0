@@ -19,21 +19,42 @@ typedef struct {
     int kind;
 } ALGraph;
 
-//十字链表
+//十字链表 - 有向图
 typedef struct AcrBox {
     int tailvex, headvex;
-    struct AcrBox *tlink,*hlink;
+    struct AcrBox *tlink, *hlink;
     int weight;
-}AcrBox;
+} AcrBox;
 
-typedef struct VexNode{
+typedef struct VexNode {
     int data;
-    ArcNode *firstin,firstout;
-}VexNode;
+    ArcNode *firstin, firstout;
+} VexNode;
 
 typedef struct {
     VexNode vexNodes[MAX_VERTEX];
-    int vexnum,arcnum;
-}OLGraph;
+    int vexnum, arcnum;
+} OLGraph;
 
-//邻接多重表
+//邻接多重表 - 无向图
+typedef enum {
+    unvisited, visited
+} VisitIf;
+
+typedef struct EBox{
+    VisitIf mark;
+    int ivex,jvex;
+    struct EBox *ilink,*jlink;
+    int weight;
+}EBox;
+
+typedef struct VexBox{
+    int data;
+    EBox *firstedge;
+}VexBox;
+
+typedef struct {
+    VexBox vexlist[MAX_VERTEX];
+    int vexnum,arcnum;
+}AMLGraph;
+
