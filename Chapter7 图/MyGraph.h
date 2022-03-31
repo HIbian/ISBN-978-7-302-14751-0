@@ -36,6 +36,8 @@ typedef struct {
     int vexnum, arcnum;
 } OLGraph;
 
+int CreateDG(OLGraph *G);
+
 //邻接多重表 - 无向图
 typedef enum {
     unvisited, visited
@@ -58,4 +60,4 @@ typedef struct {
     int vexnum,arcnum;
 }AMLGraph;
 
-int CreateDG(OLGraph *G);
+void CreateAML(AMLGraph *G);

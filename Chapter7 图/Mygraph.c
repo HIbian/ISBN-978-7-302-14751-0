@@ -30,3 +30,29 @@ int CreateDG(OLGraph *G) {
         headVex->firstin = arc;
     }
 }
+
+void CreateAML(AMLGraph *G) {
+    scanf("%d %d", &G->arcnum, &G->vexnum);
+    //初始化点
+    for (int i = 0; i < G->vexnum; ++i) {
+        scanf("%d", &G->vexlist[i].data);
+        G->vexlist[i].firstedge = NULL;
+    }
+    //初始化边
+    for (int j = 0; j < G->arcnum; ++j) {
+        int ivex, jvex;
+        scanf("%d %d", &ivex, &jvex);
+        if (ivex > G->vexnum || jvex > G->vexnum) {
+            printf("输入不合法\n");
+            j--;
+            continue;
+        }
+        EBox *edge = (EBox *) malloc(sizeof(EBox));
+        edge->jvex = jvex - 1;
+        edge->ivex = ivex - 1;
+        edge->weight = 0;
+        edge->ilink = G->vexlist[ivex-1].firstedge;
+        edge->jlink = G->vexlist[jvex-1].firstedge;
+    }
+
+}
