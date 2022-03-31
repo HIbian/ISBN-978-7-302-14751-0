@@ -58,7 +58,7 @@ void CreateAML(AMLGraph *G) {
     }
 }
 
-void CreateAMLByData(AMLGraph *G,int vexnum,int arcnum,const int *data,int edge_vex[][2]){
+void CreateAMLByData(AMLGraph *G, int vexnum, int arcnum, const int *data, int edge_vex[][2]) {
     G->vexnum = vexnum;
     G->arcnum = arcnum;
     //初始化点
@@ -78,5 +78,57 @@ void CreateAMLByData(AMLGraph *G,int vexnum,int arcnum,const int *data,int edge_
         edge->ilink = G->vexlist[ivex - 1].firstedge;
         edge->jlink = G->vexlist[jvex - 1].firstedge;
         G->vexlist[ivex - 1].firstedge = G->vexlist[jvex - 1].firstedge = edge;
+    }
+}
+
+//第一个相邻顶点下标 -1表示没有
+int FirstAdjVex(AMLGraph *G, int v) {
+    EBox *edge = G->vexlist[v].firstedge;
+    if (edge == NULL) {
+        return -1;
+    }
+    //ps:包含了回环情况：若i=v且j=v.返回的值也是v.若不相等返回的是和v不相同的另一个顶点
+    return edge->ivex == v ? edge->jvex : edge->ivex;
+}
+
+//下一个相邻顶点下标 -1表示没有
+int NextAdjVex(AMLGraph *G, int v, int w) {
+    EBox *edge = G->vexlist[v].firstedge;
+    int i_or_j = 0;//确定v位置0 i 1 j
+    while (edge) {
+        i_or_j = edge->jvex == v;
+        if (i_or_j) {
+            //v在j的情况
+            if (edge->ivex == w) {
+                edge = edge->jlink;
+                break;
+            }
+            edge = edge->jlink;
+        } else {
+            if (edge->jvex == w) {
+                edge = edge->ilink;
+                break;
+            }
+            edge = edge->ilink;
+        }
+    }
+    if (!edge) return -1;
+    i_or_j = edge->jvex == v;
+    if (i_or_j) return edge->ivex;
+    else return edge->jvex;
+}
+
+void DFSTraverse(AMLGraph *G) {
+    int visited[MAX_VERTEX] = {0};
+    for (int v = 0; v < G->vexnum; ++v) {
+        if (!visited[v]) DFS(G, v, visited);
+    }
+}
+
+void DFS(AMLGraph *G, int v, int visited[]) {
+    visited[v] = 1;
+    printf("%d->", G->vexlist[v].data);
+    for (int w = FirstAdjVex(G, v); w >= 0; w = NextAdjVex(G, v, w)) {
+        if (!visited[w]) DFS(G, w, visited);
     }
 }

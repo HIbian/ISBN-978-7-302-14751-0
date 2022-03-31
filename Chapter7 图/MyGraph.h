@@ -62,4 +62,14 @@ typedef struct {
 
 void CreateAML(AMLGraph *G);
 
-void CreateAMLByData(AMLGraph *G, int vexnum, int arcnum,const int *data,int edge_vex[][2]);
+void CreateAMLByData(AMLGraph *G, int vexnum, int arcnum, const int *data, int edge_vex[][2]);
+
+//第一个相邻顶点下标 -1表示没有
+int FirstAdjVex(AMLGraph *G, int v);
+
+//下一个相邻顶点下标 -1表示没有
+int NextAdjVex(AMLGraph *G, int v, int w);
+
+void DFSTraverse(AMLGraph *G);
+
+void DFS(AMLGraph *G, int v,int visited[]);

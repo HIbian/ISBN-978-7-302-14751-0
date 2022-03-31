@@ -43,6 +43,9 @@ int main() {
             {2, 5},
             {3, 5}
     };
-    CreateAMLByData(aml, 5, 6, data, (int **) edge_vex);
-    printf("%d %d",aml->vexnum,aml->arcnum);
+    CreateAMLByData(aml, 5, 6, data, edge_vex);
+    printf("%d %d\n", aml->vexnum, aml->arcnum);
+
+    //深度优先遍历
+    DFSTraverse(aml);
 }
