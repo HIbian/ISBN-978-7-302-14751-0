@@ -6,7 +6,7 @@
 #include "stdio.h"
 
 int main() {
-    OLGraph *G = (OLGraph *) malloc(sizeof(OLGraph));
+//    OLGraph *G = (OLGraph *) malloc(sizeof(OLGraph));
     /*
      * 测试为五个顶点八条边的有向图
      * 5 8
@@ -29,7 +29,20 @@ int main() {
      * 测试输入数据
      * https://cdn.jsdelivr.net/gh/HIbian/MyStaticResources/202203311506913.jpeg
      */
-    AMLGraph *amlGraph = (AMLGraph *) malloc(sizeof(AMLGraph));
-    CreateAML(amlGraph);
-    printf("%d %d", amlGraph->vexnum, amlGraph->arcnum);
+//    AMLGraph *amlGraph = (AMLGraph *) malloc(sizeof(AMLGraph));
+//    CreateAML(amlGraph);
+//    printf("%d %d", amlGraph->vexnum, amlGraph->arcnum);
+
+    AMLGraph *aml = (AMLGraph *) malloc(sizeof(AMLGraph));
+    int data[5] = {1, 2, 3, 4, 5};
+    int edge_vex[6][2] = {
+            {1, 2},
+            {1, 4},
+            {2, 3},
+            {3, 4},
+            {2, 5},
+            {3, 5}
+    };
+    CreateAMLByData(aml, 5, 6, data, (int **) edge_vex);
+    printf("%d %d",aml->vexnum,aml->arcnum);
 }

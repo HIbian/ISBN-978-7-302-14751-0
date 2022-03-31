@@ -43,21 +43,23 @@ typedef enum {
     unvisited, visited
 } VisitIf;
 
-typedef struct EBox{
+typedef struct EBox {
     VisitIf mark;
-    int ivex,jvex;
-    struct EBox *ilink,*jlink;
+    int ivex, jvex;
+    struct EBox *ilink, *jlink;
     int weight;
-}EBox;
+} EBox;
 
-typedef struct VexBox{
+typedef struct VexBox {
     int data;
     EBox *firstedge;
-}VexBox;
+} VexBox;
 
 typedef struct {
     VexBox vexlist[MAX_VERTEX];
-    int vexnum,arcnum;
-}AMLGraph;
+    int vexnum, arcnum;
+} AMLGraph;
 
 void CreateAML(AMLGraph *G);
+
+void CreateAMLByData(AMLGraph *G, int vexnum, int arcnum,const int *data,int edge_vex[][2]);

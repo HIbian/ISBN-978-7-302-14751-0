@@ -56,5 +56,27 @@ void CreateAML(AMLGraph *G) {
         edge->jlink = G->vexlist[jvex - 1].firstedge;
         G->vexlist[ivex - 1].firstedge = G->vexlist[jvex - 1].firstedge = edge;
     }
+}
 
+void CreateAMLByData(AMLGraph *G,int vexnum,int arcnum,const int *data,int edge_vex[][2]){
+    G->vexnum = vexnum;
+    G->arcnum = arcnum;
+    //初始化点
+    for (int i = 0; i < G->vexnum; ++i) {
+        G->vexlist[i].data = data[i];
+        G->vexlist[i].firstedge = NULL;
+    }
+    //初始化边
+    for (int j = 0; j < G->arcnum; ++j) {
+        int ivex = edge_vex[j][0];
+        int jvex = edge_vex[j][1];
+        EBox *edge = (EBox *) malloc(sizeof(EBox));
+        edge->jvex = jvex - 1;
+        edge->ivex = ivex - 1;
+        edge->weight = 0;
+        //插入链表
+        edge->ilink = G->vexlist[ivex - 1].firstedge;
+        edge->jlink = G->vexlist[jvex - 1].firstedge;
+        G->vexlist[ivex - 1].firstedge = G->vexlist[jvex - 1].firstedge = edge;
+    }
 }
