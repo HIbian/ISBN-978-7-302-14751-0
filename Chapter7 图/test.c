@@ -5,7 +5,7 @@
 #include "MyGraph.h"
 #include "stdio.h"
 
-int main(){
+int main() {
     OLGraph *G = (OLGraph *) malloc(sizeof(OLGraph));
     /*
      * 测试为五个顶点八条边的有向图
@@ -22,6 +22,14 @@ int main(){
      * 通过debug和画图验证数据正确性
      * https://cdn.jsdelivr.net/gh/HIbian/MyStaticResources/202203301641025.jpg
      */
-    CreateDG(G);
-    printf("%d %d",G->vexnum,G->arcnum);
+//    CreateDG(G);
+//    printf("%d %d",G->vexnum,G->arcnum);
+
+    /*
+     * 测试输入数据
+     * https://cdn.jsdelivr.net/gh/HIbian/MyStaticResources/202203311506913.jpeg
+     */
+    AMLGraph *amlGraph = (AMLGraph *) malloc(sizeof(AMLGraph));
+    CreateAML(amlGraph);
+    printf("%d %d", amlGraph->vexnum, amlGraph->arcnum);
 }

@@ -32,7 +32,7 @@ int CreateDG(OLGraph *G) {
 }
 
 void CreateAML(AMLGraph *G) {
-    scanf("%d %d", &G->arcnum, &G->vexnum);
+    scanf("%d %d", &G->vexnum, &G->arcnum);
     //初始化点
     for (int i = 0; i < G->vexnum; ++i) {
         scanf("%d", &G->vexlist[i].data);
@@ -51,8 +51,10 @@ void CreateAML(AMLGraph *G) {
         edge->jvex = jvex - 1;
         edge->ivex = ivex - 1;
         edge->weight = 0;
-        edge->ilink = G->vexlist[ivex-1].firstedge;
-        edge->jlink = G->vexlist[jvex-1].firstedge;
+        //插入链表
+        edge->ilink = G->vexlist[ivex - 1].firstedge;
+        edge->jlink = G->vexlist[jvex - 1].firstedge;
+        G->vexlist[ivex - 1].firstedge = G->vexlist[jvex - 1].firstedge = edge;
     }
 
 }
