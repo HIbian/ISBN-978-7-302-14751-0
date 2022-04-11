@@ -58,7 +58,7 @@ void CreateAML(AMLGraph *G) {
     }
 }
 
-void CreateAMLByData(AMLGraph *G, int vexnum, int arcnum, const int *data, int edge_vex[][2]) {
+void CreateAMLByData(AMLGraph *G, int vexnum, int arcnum, const int *data, int edge_vex[][3]) {
     G->vexnum = vexnum;
     G->arcnum = arcnum;
     //初始化点
@@ -73,7 +73,7 @@ void CreateAMLByData(AMLGraph *G, int vexnum, int arcnum, const int *data, int e
         EBox *edge = (EBox *) malloc(sizeof(EBox));
         edge->jvex = jvex - 1;
         edge->ivex = ivex - 1;
-        edge->weight = 0;
+        edge->weight = edge_vex[j][2];
         //插入链表
         edge->ilink = G->vexlist[ivex - 1].firstedge;
         edge->jlink = G->vexlist[jvex - 1].firstedge;

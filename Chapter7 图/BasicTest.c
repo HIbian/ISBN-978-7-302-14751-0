@@ -35,13 +35,13 @@ int main() {
 
     AMLGraph *aml = (AMLGraph *) malloc(sizeof(AMLGraph));
     int data[5] = {1, 2, 3, 4, 5};
-    int edge_vex[6][2] = {
-            {1, 2},
-            {1, 4},
-            {2, 3},
-            {3, 4},
-            {2, 5},
-            {3, 5}
+    int edge_vex[6][3] = {
+            {1, 2,0},
+            {1, 4,0},
+            {2, 3,0},
+            {3, 4,0},
+            {2, 5,0},
+            {3, 5,0}
     };
     CreateAMLByData(aml, 5, 6, data, edge_vex);
     printf("%d %d\n", aml->vexnum, aml->arcnum);

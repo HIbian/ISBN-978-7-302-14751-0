@@ -62,7 +62,7 @@ typedef struct {
 
 void CreateAML(AMLGraph *G);
 
-void CreateAMLByData(AMLGraph *G, int vexnum, int arcnum, const int *data, int edge_vex[][2]);
+void CreateAMLByData(AMLGraph *G, int vexnum, int arcnum, const int *data, int edge_vex[][3]);
 
 //第一个相邻顶点下标 -1表示没有
 int FirstAdjVex(AMLGraph *G, int v);
