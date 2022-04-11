@@ -73,3 +73,7 @@ int NextAdjVex(AMLGraph *G, int v, int w);
 void DFSTraverse(AMLGraph *G);
 
 void DFS(AMLGraph *G, int v,int visited[]);
+
+int DirectCostFromAtoB(AMLGraph *G, int from, int to);
+//默认从第一个顶点构造最小生成树
+void MST_Prim(AMLGraph *G);

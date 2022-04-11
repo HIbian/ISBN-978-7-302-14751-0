@@ -132,3 +132,70 @@ void DFS(AMLGraph *G, int v, int visited[]) {
         if (!visited[w]) DFS(G, w, visited);
     }
 }
+
+int DirectCostFromAtoB(AMLGraph *G, int from, int to) {
+    if (from == to) return -1;
+    EBox *p = G->vexlist[from].firstedge;
+    while (p) {
+        if (p->jvex == to || p->ivex == to) {
+            return p->weight;
+        }
+        if (p->jvex == from) {
+            p = p->jlink;
+        } else {
+            p = p->ilink;
+        }
+    }
+    return -1;
+}
+
+typedef struct {
+    int adjvex_index;
+    int lowcost;
+}Closedge;
+
+int minimum(Closedge *ce,int vexnum){
+    int min_index = -1;
+    //找到一个合法初始值
+    for (int i = 0; i < vexnum; ++i) {
+        if (ce[i].lowcost != -1 && ce[i].lowcost != 0) {
+            min_index = i;
+            break;
+        }
+    }
+    for (int i = 0; i < vexnum; ++i) {
+        if(ce[i].lowcost !=-1 && ce[i].lowcost != 0 && ce[i].lowcost < ce[min_index].lowcost){
+            min_index = i;
+        }
+    }
+    return min_index;
+}
+
+//默认从第一个顶点构造最小生成树
+void MST_Prim(AMLGraph *G) {
+    Closedge *closedge = (Closedge *)malloc(sizeof(Closedge)*MAX_VERTEX);
+    //init the first index of vex
+    int k = 0;
+    for (int j = 0; j < G->vexnum; ++j) {
+        if (j != k) {
+            closedge[j].adjvex_index = k;
+            closedge[j].lowcost = DirectCostFromAtoB(G, k, j);
+        }
+    }
+    closedge[k].lowcost = 0;
+    for (int i = 0; i < G->vexnum - 1; ++i) {
+        k = minimum(closedge,G->vexnum);
+        closedge[k].lowcost = 0;
+        printf("%d--%d\n",closedge[k].adjvex_index,k);
+        //update cloesedge after add k to U
+        for (int j = 0; j < G->vexnum; ++j) {
+            if(j!=k && closedge[j].lowcost!=0){
+                int cost = DirectCostFromAtoB(G,k,j);
+                if (cost!=-1 && (cost < closedge[j].lowcost || closedge[j].lowcost==-1)){
+                    closedge[j].adjvex_index = k;
+                    closedge[j].lowcost = cost;
+                }
+            }
+        }
+    }
+}
