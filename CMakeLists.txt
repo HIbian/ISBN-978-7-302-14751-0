@@ -11,4 +11,4 @@ add_executable(4.2 "Chapter4 串/4.2 串的堆分配存储表示/MyString.h" "Ch
 add_executable(6.2 "Chapter6 树和二叉树/6.2 二叉树的链式存储/MyBinaryTree.h" "Chapter6 树和二叉树/6.2 二叉树的链式存储/MyBinaryTree.c" "Chapter6 树和二叉树/6.2 二叉树的链式存储/test6.2.c" "Chapter6 树和二叉树/6.2 二叉树的链式存储/NodeQueue.c")
 add_executable(7 "Chapter7 图/BasicTest.c" "Chapter7 图/MyGraph.h" "Chapter7 图/Mygraph.c")
 add_executable(9 "Chapter9 查找/test.c" "Chapter9 查找/search.h" "Chapter9 查找/search.c")
-
+add_executable(10 "Chapter10 内部排序/test.c" "Chapter10 内部排序/sort.h" "Chapter10 内部排序/sort.c")
