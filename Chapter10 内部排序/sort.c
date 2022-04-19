@@ -53,4 +53,26 @@ void BInsertSort(SqList *L) {
     }
 }
 
+void ShellInsert(SqList *L, int dk) {
+    for (int i = dk + 1; i <= L->length; i++) {
+        if (L->record[i] < L->record[i - dk]) {
+            L->record[0] = L->record[i];
+            int j = i - dk;
+            for (; j >= 1; j -= dk) {
+                if (L->record[0] < L->record[j]) {
+                    L->record[j + dk] = L->record[j];
+                    continue;
+                }
+                break;
+            }
+            L->record[j + dk] = L->record[0];
+        }
+    }
+}
+
+void ShellSort(SqList *L, int dlta[], int t) {
+    for (int i = 0; i < t; ++i) {
+        ShellInsert(L, dlta[i]);
+    }
+}
 

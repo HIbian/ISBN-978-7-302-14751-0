@@ -21,6 +21,10 @@ void InsertSort(SqList *L);
 
 void BInsertSort(SqList *L);
 
+void ShellInsert(SqList *L, int dk);
+
+void ShellSort(SqList *L, int dlta[], int t);
+
 //交换排序
 
 //选择排序
