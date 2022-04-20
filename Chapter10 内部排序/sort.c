@@ -81,11 +81,32 @@ void ShellSort(SqList *L, int dlta[], int t) {
 void BubbleSort(SqList *L) {
     for (int i = 1; i <= L->length - 1; ++i) {
         for (int j = 1; j <= L->length - i; ++j) {
-            if (L->record[j]>L->record[j+1]){
-                L->record[0] = L->record[j+1];
-                L->record[j+1] = L->record[j];
+            if (L->record[j] > L->record[j + 1]) {
+                L->record[0] = L->record[j + 1];
+                L->record[j + 1] = L->record[j];
                 L->record[j] = L->record[0];
             }
         }
+    }
+}
+
+int Partition(SqList *L, int low, int high) {
+    L->record[0] = L->record[low];
+    while (low < high) {
+        while (low < high && L->record[high] >= L->record[0]) high--;
+        L->record[low] = L->record[high]; //关于这里直接赋值,low在这之前已经把值给了0或者high,所以可以直接赋值
+        while (low < high && L->record[low] <= L->record[0]) low++;
+        L->record[high] = L->record[low];
+    }
+    L->record[low] = L->record[0];
+    return low;
+}
+
+void QuickSort(SqList *L, int low, int high) {
+    if (low < high) {
+        int pivotloc = Partition(L, low, high);
+        printf("low=%d high=%d p=%d\n", low, high, pivotloc);
+        QuickSort(L, pivotloc + 1, high);
+        QuickSort(L, low, pivotloc - 1);
     }
 }
