@@ -76,3 +76,16 @@ void ShellSort(SqList *L, int dlta[], int t) {
     }
 }
 
+//交换排序
+
+void BubbleSort(SqList *L) {
+    for (int i = 1; i <= L->length - 1; ++i) {
+        for (int j = 1; j <= L->length - i; ++j) {
+            if (L->record[j]>L->record[j+1]){
+                L->record[0] = L->record[j+1];
+                L->record[j+1] = L->record[j];
+                L->record[j] = L->record[0];
+            }
+        }
+    }
+}

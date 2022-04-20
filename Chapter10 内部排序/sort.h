@@ -27,6 +27,8 @@ void ShellSort(SqList *L, int dlta[], int t);
 
 //交换排序
 
+void BubbleSort(SqList *L);
+
 //选择排序
 
 //归并排序
