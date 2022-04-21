@@ -127,3 +127,30 @@ void SimpleSelectSort(SqList *L) {
         L->record[i] = temp;
     }
 }
+
+void HeapAdjust(SqList *L, int s, int m) {
+    int temp = L->record[s];
+    for (int j = 2 * s; j <= m; j *= 2) {
+        if (j < m && L->record[j] < L->record[j + 1]) j++;
+        if (temp >= L->record[j]) break;
+        L->record[s] = L->record[j];
+        s = j;
+    }
+    L->record[s] = temp;
+}
+
+void HeapSort(SqList *L) {
+    //把L->record[1...L->length]构造为大顶堆
+    for (int i = L->length / 2; i >= 1; --i) {
+        HeapAdjust(L, i, L->length);
+    }
+    //进行筛选
+    for (int i = L->length; i > 1; i--) {
+        //交换第一位和最后一位，第一位放入最终位置
+        L->record[0] = L->record[i];
+        L->record[i] = L->record[1];
+        L->record[1] = L->record[0];
+        HeapAdjust(L, 1, i - 1);
+    }
+}
+

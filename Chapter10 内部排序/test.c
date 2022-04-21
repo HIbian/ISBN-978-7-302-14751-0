@@ -20,6 +20,8 @@ void QuickSortTest();
 
 void SimpleSelectSortTest();
 
+void HeapSortTest();
+
 int main() {
 //    InsertSortTest();
 //    BInsertSortTest();
@@ -28,7 +30,15 @@ int main() {
 //    BubbleSortTest();
 //    QuickSortTest();
 
-    SimpleSelectSortTest();
+//    SimpleSelectSortTest();
+    HeapSortTest();
+}
+
+void HeapSortTest() {
+    SqList *list = InitTestList();
+    Print(list);
+    HeapSort(list);
+    Print(list);
 }
 
 void SimpleSelectSortTest() {

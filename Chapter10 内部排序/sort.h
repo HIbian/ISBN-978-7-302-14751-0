@@ -29,13 +29,17 @@ void ShellSort(SqList *L, int dlta[], int t);
 
 void BubbleSort(SqList *L);
 
-int Partition(SqList *L,int low,int high);
+int Partition(SqList *L, int low, int high);
 
-void QuickSort(SqList *L,int low ,int high);
+void QuickSort(SqList *L, int low, int high);
 
 //选择排序
 
 void SimpleSelectSort(SqList *L);
+
+void HeapAdjust(SqList *L, int s, int m);
+
+void HeapSort(SqList *L);
 
 //归并排序
 
