@@ -35,6 +35,8 @@ void QuickSort(SqList *L,int low ,int high);
 
 //选择排序
 
+void SimpleSelectSort(SqList *L);
+
 //归并排序
 
 //记树排序

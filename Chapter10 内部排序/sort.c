@@ -110,3 +110,20 @@ void QuickSort(SqList *L, int low, int high) {
         QuickSort(L, low, pivotloc - 1);
     }
 }
+
+//选择排序
+void SimpleSelectSort(SqList *L) {
+    int temp = 0;
+    for (int i = 1; i <= L->length - 1; ++i) {
+        L->record[0] = i;//save mininal position.
+        for (int j = i + 1; j <= L->length; ++j) {
+            if (L->record[j] < L->record[L->record[0]]) {
+                L->record[0] = j;
+            }
+        }
+        if (L->record[0] == i) continue;
+        temp = L->record[L->record[0]];
+        L->record[L->record[0]] = L->record[i];
+        L->record[i] = temp;
+    }
+}

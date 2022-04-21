@@ -18,13 +18,24 @@ SqList *InitTestList();
 
 void QuickSortTest();
 
+void SimpleSelectSortTest();
+
 int main() {
 //    InsertSortTest();
 //    BInsertSortTest();
 //    ShellSortTest();
 
 //    BubbleSortTest();
-    QuickSortTest();
+//    QuickSortTest();
+
+    SimpleSelectSortTest();
+}
+
+void SimpleSelectSortTest() {
+    SqList *list = InitTestList();
+    Print(list);
+    SimpleSelectSort(list);
+    Print(list);
 }
 
 void QuickSortTest() {
